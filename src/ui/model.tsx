@@ -5,6 +5,7 @@ type ModalProps = {
 };
 
 export default function Modal({ children, open, onClose }: ModalProps) {
+  // TODO: Add test for Modal function before  createing it.
   if (!open) return null;
 
   return (
