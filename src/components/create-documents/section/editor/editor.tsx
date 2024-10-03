@@ -1,29 +1,36 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Section from "./section";
 import { Tsection } from "../../../../types/create-document";
+import Button from "../../../../ui/Button";
 
 type EditorProps = {
   section: Tsection[];
-  setSection: React.Dispatch<React.SetStateAction<Tsection[]>>;
+  setSection: (sectionData: Tsection[]) => void;
 };
+
 const Editor = ({ section, setSection }: EditorProps) => {
-  // TODO: this feature is not implemented yet, and will come in play when we implement the template
-  const [data, setData] = useState<Tsection[]>(section);
+  const [sectionData, setSectionData] = useState<Tsection[]>(section);
 
-  useEffect(() => {
-    if (data !== section) {
-      setData(section);
-    }
-  }, [section, data]);
-
-  // const onSubmit = () => {
-  //   setSection(data);
-  // };
+  const submit = () => {
+    console.log(sectionData);
+    setSection(sectionData);
+  };
 
   return (
-    <div>
-      {data.map((section, index) => {
-        return <div> individual section </div>;
-      })}
+    <div className="mx-2">
+      <div className="flex justify-end">
+        <Button onClick={submit}>Sync</Button>
+      </div>
+      {sectionData.map((sec, index) => (
+        <Section key={index} section={sec} setSection={setSectionData} />
+      ))}
+      <Button
+        onClick={() => {
+          setSectionData((prev: Tsection[]) => [...prev, { heading: "" }]);
+        }}
+      >
+        Add Section
+      </Button>
     </div>
   );
 };

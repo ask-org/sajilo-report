@@ -1,11 +1,24 @@
-// Implementation Detail: This will divide the screen into two parts, one for the editor and one for the preview.
-// The editor part will contain the sections field which will have title and a paragraph field. the user can choose to add 'sub section' to the section which will again provide him with  a title and content.
-
-// import { useState } from "react";
-// import { Tsection } from "../components/types/create-document";
+import { useState } from "react";
+import Editor from "../components/create-documents/section/editor/editor";
+import Preview from "../components/create-documents/section/preview/preview";
+import { Tsection } from "../types/create-document";
 
 export default function CreateDocument() {
-  // const [section, setSection] = useState<Tsection[]>([]);
+  const [section, setSection] = useState<Tsection[]>([
+    {
+      heading: "Abstract",
+      paragraph: ["This is the first paragraph "],
+    },
+  ]);
 
-  return <div></div>;
+  return (
+    <div className="grid grid-cols-12">
+      <div className="col-span-4">
+        <Editor section={section} setSection={setSection} />
+      </div>
+      <div className="col-span-8">
+        <Preview />
+      </div>
+    </div>
+  );
 }
