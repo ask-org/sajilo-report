@@ -1,19 +1,22 @@
-import { ChangeEvent } from "react";
+import React from "react";
 
-type HeadingProps = {
+interface HeadingProps {
   heading: string;
-  setHeading: React.Dispatch<React.SetStateAction<string>>;
-};
+  setHeading: (value: string) => void;
+}
 
-const Heading = ({ heading, setHeading }: HeadingProps) => {
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setHeading(e.target.value);
-  };
+const Heading: React.FC<HeadingProps> = ({ heading, setHeading }) => {
   return (
-    <>
-      <label htmlFor={heading}>Heading:</label>
-      <input id={heading} type="text" onChange={onChange} value={heading} />
-    </>
+    <div>
+      <label htmlFor="heading-input">Heading:</label>
+      <input
+        id="heading-input"
+        type="text"
+        value={heading}
+        onChange={(e) => setHeading(e.target.value)}
+        aria-label="Heading:"
+      />
+    </div>
   );
 };
 
