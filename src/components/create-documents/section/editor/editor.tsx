@@ -12,7 +12,6 @@ const Editor = ({ section, setSection }: EditorProps) => {
   const [sectionData, setSectionData] = useState<Tsection[]>(section);
 
   const submit = () => {
-    console.log(sectionData);
     setSection(sectionData);
   };
 

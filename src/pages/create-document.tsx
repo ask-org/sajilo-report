@@ -12,12 +12,15 @@ export default function CreateDocument() {
   ]);
 
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-4">
+    <div className="grid grid-cols-12 h-screen">
+      {/* Editor Section */}
+      <div className="col-span-4 h-full overflow-y-auto bg-gray-100 p-4">
         <Editor section={section} setSection={setSection} />
       </div>
-      <div className="col-span-8">
-        <Preview />
+
+      {/* Preview Section */}
+      <div className="col-span-8 h-full overflow-y-auto bg-white p-4">
+        <Preview section={section} />
       </div>
     </div>
   );
