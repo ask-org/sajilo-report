@@ -1,6 +1,6 @@
 export type THeading = string;
 export type TParagraph = string[];
-export type TImage = string[];
+export type TFigure = { src: File; caption: string };
 export type TTable = {
   row: number;
   column: number;
@@ -10,7 +10,7 @@ export type TTable = {
 export type Tsection = {
   heading: THeading;
   paragraph?: TParagraph;
-  image?: TImage;
+  figures?: TFigure[];
   table?: TTable;
   subSections?: Tsection[];
 };
