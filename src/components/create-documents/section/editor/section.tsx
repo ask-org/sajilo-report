@@ -11,6 +11,7 @@ type SectionProps = {
 };
 
 const Section = ({ section, setSection }: SectionProps) => {
+  const [showSubSection, setShowSubSection] = useState<boolean>(false);
   const [correct, setCorrect] = useState<boolean>();
   const [heading, setHeading] = useState(section.heading);
   const [images, setImages] = useState<TFigure[]>(section.figures ?? []);
@@ -50,6 +51,12 @@ const Section = ({ section, setSection }: SectionProps) => {
       <Heading heading={heading} setHeading={setHeading} />
       <Paragraphs paragraphs={paragraphs} setParagraphs={setParagraphs} />
       <Images images={images} setImages={setImages} />
+      {showSubSection ? (
+        <Section section={section} setSection={() => {}} />
+      ) : null}
+      <div className="flex justify-center mt-6">
+        <Button onClick={() => setShowSubSection(true)}>Sub sections?</Button>
+      </div>
       <div className="flex justify-center mt-6">
         <Button onClick={onSubmit}>Save</Button>
       </div>
