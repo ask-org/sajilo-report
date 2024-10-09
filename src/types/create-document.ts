@@ -12,5 +12,5 @@ export type Tsection = {
   paragraph?: TParagraph;
   figures?: TFigure[];
   table?: TTable;
-  subSections?: Tsection[];
+  subSections?: Tsection[] | null;
 };
