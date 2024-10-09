@@ -26,7 +26,13 @@ const Section = ({ section, setSection }: SectionProps) => {
     setSection((prev) =>
       prev.map((s) =>
         s === section
-          ? { ...s, heading, paragraph: paragraphs, figures: images }
+          ? {
+              ...s,
+              heading,
+              paragraph: paragraphs,
+              figures: images,
+              subSections: subSection,
+            }
           : s,
       ),
     );
@@ -48,13 +54,14 @@ const Section = ({ section, setSection }: SectionProps) => {
     if (
       section.heading == heading &&
       section.paragraph == paragraphs &&
-      section.figures == images
+      section.figures == images &&
+      section.subSections == subSection
     ) {
       setCorrect(true);
     } else {
       setCorrect(false);
     }
-  }, [heading, paragraphs, section, images]);
+  }, [heading, paragraphs, section, images, subSection]);
 
   return (
     <div
