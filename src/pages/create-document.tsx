@@ -1,11 +1,16 @@
 import { useState } from "react";
 import Editor from "../components/create-documents/section/editor/editor";
-import Preview from "../components/create-documents/section/preview/preview";
+// import Preview from "../components/create-documents/section/preview/preview";
 import { Tsection } from "../types/create-document";
 
 export default function CreateDocument() {
   const [section, setSection] = useState<Tsection[]>([
-    { content: [{ type: "heading", value: "value" }] },
+    {
+      content: [
+        { type: "heading", value: "value" },
+        { type: "paragraph", value: "value" },
+      ],
+    },
   ]);
 
   return (
