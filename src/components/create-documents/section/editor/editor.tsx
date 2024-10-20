@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Section from "./section";
 import { Tsection } from "../../../../types/create-document";
 import Button from "../../../../ui/Button";
@@ -11,8 +11,16 @@ type EditorProps = {
 const Editor = ({ section, setSection }: EditorProps) => {
   const [sectionData, setSectionData] = useState<Tsection[]>(section);
 
+  useEffect(() => {
+    console.log(sectionData);
+  });
+
   const submit = () => {
     setSection(sectionData);
+  };
+
+  const blankData: Tsection = {
+    content: [{ type: "heading", value: "New Section" }],
   };
 
   return (
@@ -25,7 +33,7 @@ const Editor = ({ section, setSection }: EditorProps) => {
       ))}
       <Button
         onClick={() => {
-          setSectionData((prev: Tsection[]) => [...prev, { heading: "" }]);
+          setSectionData((prev: Tsection[]) => [...prev, blankData]);
         }}
       >
         Add Section

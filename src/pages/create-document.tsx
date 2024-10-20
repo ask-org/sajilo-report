@@ -5,10 +5,7 @@ import { Tsection } from "../types/create-document";
 
 export default function CreateDocument() {
   const [section, setSection] = useState<Tsection[]>([
-    {
-      heading: "Abstract",
-      paragraph: ["This is the first paragraph "],
-    },
+    { content: [{ type: "heading", value: "value" }] },
   ]);
 
   return (
@@ -18,10 +15,11 @@ export default function CreateDocument() {
         <Editor section={section} setSection={setSection} />
       </div>
 
-      {/* Preview Section */}
-      <div className="col-span-8 h-full overflow-y-auto bg-white p-4">
-        <Preview section={section} />
-      </div>
+      {/* Preview Section
+      // <div className="col-span-8 h-full overflow-y-auto bg-white p-4">
+      //   <Preview section={section} />
+      // </div>
+      */}
     </div>
   );
 }

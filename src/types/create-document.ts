@@ -7,10 +7,13 @@ export type TTable = {
   data: string[][];
 };
 
+export type TContentItem =
+  | { type: "heading"; value: THeading }
+  | { type: "paragraph"; value: TParagraph }
+  | { type: "figure"; value: TFigure }
+  | { type: "table"; value: TTable };
+
 export type Tsection = {
-  heading: THeading;
-  paragraph?: TParagraph;
-  figures?: TFigure[];
-  table?: TTable;
-  subSections?: Tsection[] | null;
+  content: TContentItem[];
+  subection?: Tsection[];
 };

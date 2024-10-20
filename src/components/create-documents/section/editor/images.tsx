@@ -3,7 +3,7 @@ import Button from "../../../../ui/Button";
 import { TFigure } from "../../../../types/create-document";
 
 interface ImagesProps {
-  images: TFigure[];
+  images: TFigure;
   setImages: (value: TFigure[]) => void;
 }
 
