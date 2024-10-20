@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Heading from "./heading"; // Adjust the import path based on your folder structure
 import { TContentItem, Tsection } from "../../../../types/create-document";
+import Paragraph from "./paragraphs/paragraph";
+import Button from "../../../../ui/Button";
 
 type SectionProps = {
   section: Tsection;

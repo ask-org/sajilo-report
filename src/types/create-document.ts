@@ -1,5 +1,5 @@
 export type THeading = string;
-export type TParagraph = string[];
+export type TParagraph = string;
 export type TFigure = { src: File | null; caption: string };
 export type TTable = {
   row: number;
