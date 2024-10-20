@@ -2,7 +2,7 @@ import React from "react";
 
 interface HeadingProps {
   heading: string;
-  setHeading: () => void;
+  setHeading: (value: string) => void;
 }
 
 const Heading: React.FC<HeadingProps> = ({ heading, setHeading }) => {
