@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.pdf-maker-container {
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .toolbar {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  
+  .pdf-content {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: white;
+    z-index: 1;
+    position: relative;
+    line-height: 1.5;
+  }
+  
+  .pdf-content h1 {
+    color: #000;
+    font-size: 16px;
+  }
+  .pdf-content h2 {
+    color: #000;
+    font-size: 14px;
+  }
+
+  .pdf-content h3, h4, h5, h6 {
+    color: #000;
+    font-size: 12px;
+  }
+  
+  .pdf-content p {
+    color: #000;
+    font-size: 12px;
+  }
+  

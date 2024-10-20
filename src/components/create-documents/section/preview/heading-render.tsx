@@ -3,7 +3,7 @@ const HeadingRender = ({ heading }: { heading: string }) => {
     return heading.toUpperCase();
   };
 
-  return <div className="text-4xl text-center">{capitalize(heading)}</div>;
+  return <h1 className="text-center">{capitalize(heading)}</h1>;
 };
 
 export default HeadingRender;

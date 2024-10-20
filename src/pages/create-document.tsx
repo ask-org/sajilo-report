@@ -19,7 +19,7 @@ export default function CreateDocument() {
       </div>
 
       {/* Preview Section */}
-      <div className="col-span-8 h-full overflow-y-auto bg-white p-4">
+      <div className="col-span-8 overflow-y-auto pt-16 pr-24 pb-16 pl-32 h-full">
         <Preview section={section} />
       </div>
     </div>
