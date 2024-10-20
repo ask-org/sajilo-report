@@ -1,11 +1,9 @@
-import CreateDocumemnt from "./pages/create-document";
+import CreateDocument from "./pages/create-document";
 
 function App() {
   return (
     <>
-      <div className="">
-        <CreateDocumemnt />
-      </div>
+      <CreateDocument />
     </>
   );
 }
