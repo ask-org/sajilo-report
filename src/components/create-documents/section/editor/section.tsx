@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Heading from "./heading"; // Adjust the import path based on your folder structure
-import Paragraphs from "./paragraphs"; // Adjust the import path based on your folder structure
+import Paragraphs from "./paragraphs/paragraphs"; // Adjust the import path based on your folder structure
 import { TFigure, Tsection } from "../../../../types/create-document";
 import Button from "../../../../ui/Button";
 import Images from "./images";
@@ -21,8 +21,8 @@ const Section = ({ section, setSection }: SectionProps) => {
     section.subSections ?? [],
   );
 
-  const onSubmit = () => {
-    console.log({ heading, paragraphs, images });
+  // Automatically update the parent `setSection` whenever the component state changes
+  useEffect(() => {
     setSection((prev) =>
       prev.map((s) =>
         s === section
@@ -36,7 +36,7 @@ const Section = ({ section, setSection }: SectionProps) => {
           : s,
       ),
     );
-  };
+  }, [heading, paragraphs, images, subSection, section, setSection]);
 
   const addSubSection = () => {
     setSubSection((prev) => [
@@ -77,9 +77,6 @@ const Section = ({ section, setSection }: SectionProps) => {
       ))}
       <div className="flex justify-center mt-6">
         <Button onClick={addSubSection}>Sub sections?</Button>
-      </div>
-      <div className="flex justify-center mt-6">
-        <Button onClick={onSubmit}>Save</Button>
       </div>
     </div>
   );
