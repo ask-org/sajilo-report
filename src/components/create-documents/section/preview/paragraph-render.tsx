@@ -1,11 +1,5 @@
-const ParagraphRender = ({ paragraph }: { paragraph: string[] }) => {
-  return (
-    <div className="text-justify">
-      {paragraph.map((p, index) =>
-        p === "" ? <br key={index} /> : <p key={index}>{p}</p>,
-      )}
-    </div>
-  );
+const ParagraphRender = ({ paragraph }: { paragraph: string }) => {
+  return <div className="text-justify">{paragraph}</div>;
 };
 
 export default ParagraphRender;

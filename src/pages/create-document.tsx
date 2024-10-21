@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Editor from "../components/create-documents/section/editor/editor";
-// import Preview from "../components/create-documents/section/preview/preview";
+import Preview from "../components/create-documents/section/preview/preview";
 import { Tsection } from "../types/create-document";
 
 export default function CreateDocument() {
@@ -20,11 +20,10 @@ export default function CreateDocument() {
         <Editor section={section} setSection={setSection} />
       </div>
 
-      {/* Preview Section
-      // <div className="col-span-8 h-full overflow-y-auto bg-white p-4">
-      //   <Preview section={section} />
-      // </div>
-      */}
+      {/* Preview Section */}
+      <div className="col-span-8 h-full overflow-y-auto bg-white p-4">
+        <Preview section={section} />
+      </div>
     </div>
   );
 }
