@@ -11,10 +11,6 @@ type EditorProps = {
 const Editor = ({ section, setSection }: EditorProps) => {
   const [sectionData, setSectionData] = useState<Tsection[]>(section);
 
-  useEffect(() => {
-    console.log(sectionData);
-  });
-
   const submit = () => {
     setSection(sectionData);
   };
