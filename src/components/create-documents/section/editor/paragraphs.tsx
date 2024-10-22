@@ -1,64 +1,78 @@
-import React from "react";
-import Button from "../../../../ui/Button";
+// components/Paragraph/ParagraphEditor.tsx
+import { useState, useEffect, useRef } from "react";
+import { Type, Trash2 } from "lucide-react";
 
-interface ParagraphsProps {
-  paragraphs: string[];
-  setParagraphs: (value: string[]) => void;
-}
+type ParagraphProps = {
+  paragraph: string;
+  setParagraph: (value: string) => void;
+  onRemove?: () => void;
+};
 
-const Paragraphs: React.FC<ParagraphsProps> = ({
-  paragraphs,
-  setParagraphs,
-}) => {
-  const addNewParagraph = () => {
-    setParagraphs([...paragraphs, ""]);
-  };
+const ParagraphEditor = ({
+  paragraph,
+  setParagraph,
+  onRemove,
+}: ParagraphProps) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const removeParagraph = (index: number) => {
-    const newParagraphs = [...paragraphs];
-    newParagraphs.splice(index, 1);
-    setParagraphs(newParagraphs);
-  };
-
-  const updateParagraph = (index: number, value: string) => {
-    const newParagraphs = [...paragraphs];
-    newParagraphs[index] = value;
-    setParagraphs(newParagraphs);
-  };
+  // Auto-resize textarea as content grows
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  }, [paragraph]);
 
   return (
-    <div className="flex flex-col rounded-lg  mx-auto">
-      <label
-        htmlFor="heading-input"
-        className="text-lg font-semibold text-gray-700 mb-2"
-      >
-        Paragraphs:
-      </label>
-      {paragraphs.map((paragraph, index) => (
-        <div key={index} className="flex items-start space-x-2 mb-3">
-          <textarea
-            value={paragraph}
-            onChange={(e) => {
-              updateParagraph(index, e.target.value);
-            }}
-            aria-label={`Paragraph ${index + 1}:`}
-            className="flex-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
-            rows={8}
-            placeholder={`Enter paragraph ${index + 1}...`}
-          />
-          <Button
-            onClick={() => removeParagraph(index)}
-            aria-label={`Remove paragraph ${index + 1}`}
+    <div className="group relative w-full max-w-2xl mx-auto my-4">
+      <div className="absolute left-3 top-3">
+        <Type
+          className={`w-4 h-4 transition-colors duration-200 ${
+            isFocused ? "text-blue-500" : "text-gray-400"
+          }`}
+        />
+      </div>
+
+      <div className="relative">
+        <textarea
+          ref={textareaRef}
+          value={paragraph}
+          onChange={(e) => setParagraph(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          className="w-full pl-10 pr-12 py-2.5 min-h-[120px] border border-gray-200 rounded-lg
+                   shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                   bg-white text-gray-900 text-base leading-relaxed
+                   transition-all duration-200 ease-in-out
+                   resize-none whitespace-pre-wrap"
+          placeholder="Start typing your paragraph..."
+          style={{
+            lineHeight: "1.6",
+          }}
+        />
+
+        {onRemove && (
+          <button
+            onClick={onRemove}
+            className="absolute right-3 top-3 p-1.5 rounded-full
+                     opacity-0 group-hover:opacity-100
+                     hover:bg-red-50 focus:bg-red-50
+                     transition-all duration-200 ease-in-out"
+            aria-label="Remove paragraph"
           >
-            X
-          </Button>
-        </div>
-      ))}
-      <div>
-        <Button onClick={addNewParagraph}>Add New Paragraph</Button>
+            <Trash2 className="w-4 h-4 text-red-500" />
+          </button>
+        )}
+      </div>
+
+      {/* Character count */}
+      <div className="absolute right-3 bottom-2 text-xs text-gray-400">
+        {paragraph.length} characters
       </div>
     </div>
   );
 };
 
-export default Paragraphs;
+export default ParagraphEditor;
