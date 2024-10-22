@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Tsection, TContentItem } from "../../../../types/create-document";
 import HeadingRender from "./heading-render";
-import ImageRenderer from "./image-renderer";
 import ParagraphRender from "./paragraph-render";
 
 const Chapter = ({ data }: { data: Tsection }) => {

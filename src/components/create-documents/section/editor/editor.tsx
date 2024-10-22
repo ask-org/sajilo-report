@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Section from "./section";
 import { Tsection } from "../../../../types/create-document";
 import Button from "../../../../ui/Button";

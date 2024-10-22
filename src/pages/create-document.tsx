@@ -9,6 +9,7 @@ export default function CreateDocument() {
       content: [
         { type: "heading", value: "value" },
         { type: "paragraph", value: "value" },
+        { type: "figure", value: { src: "img", caption: "img" } },
       ],
     },
   ]);
