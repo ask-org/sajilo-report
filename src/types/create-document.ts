@@ -1,6 +1,6 @@
 export type THeading = string;
 export type TParagraph = string;
-export type TFigure = { src: File | null; caption: string };
+export type TFigure = { src: string | null; caption: string };
 export type TTable = {
   row: number;
   column: number;

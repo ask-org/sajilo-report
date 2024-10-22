@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import Heading from "./heading"; // Adjust the import path based on your folder structure
-import { TContentItem, Tsection } from "../../../../types/create-document";
+import {
+  TContentItem,
+  TFigure,
+  Tsection,
+} from "../../../../types/create-document";
 import Paragraph from "./paragraphs/paragraph";
 import Button from "../../../../ui/Button";
+import Figure from "./image/Figure";
 
 type SectionProps = {
   section: Tsection;
@@ -14,28 +19,39 @@ const Section = ({ section, setSection }: SectionProps) => {
   const [isAdding, setIsAdding] = useState(false); // State to toggle dropdown visibility
   const [newContentType, setNewContentType] = useState<string>(""); // State to store selected content type
 
-  // Function to update the value of a specific content item
-  const setValue = (index: number) => {
-    if (
-      content[index].type === "heading" ||
-      content[index].type === "paragraph"
-    ) {
-      return (value: string) => {
-        const newContent = [...content];
-        newContent[index].value = value;
-        setContent(newContent);
-      };
-    }
+  const setHeading = (index: number) => {
+    return (value: string) => {
+      const newContent = [...content];
+      newContent[index].value = value;
+      setContent(newContent);
+    };
+  };
+  const setParagraph = (index: number) => {
+    return (value: string) => {
+      const newContent = [...content];
+      newContent[index].value = value;
+      setContent(newContent);
+    };
+  };
+
+  const setFigure = (index: number) => {
+    return (value: TFigure) => {
+      const newContent = [...content];
+      newContent[index].value = value;
+      setContent(newContent);
+    };
   };
 
   const addSection = (type: string) => {
     const emptyHeading: TContentItem = { type: "heading", value: "" };
     const emptyParagraph: TContentItem = { type: "paragraph", value: "" };
-
+    const emptyFigure: TFigure = { src: "", caption: "" };
     if (type === "heading") {
       setContent((prev) => [...prev, emptyHeading]);
     } else if (type === "paragraph") {
       setContent((prev) => [...prev, emptyParagraph]);
+    } else if (type === "figure") {
+      setContent((prev) => [...prev, { type: "figure", value: emptyFigure }]);
     }
 
     // Reset the state after adding content
@@ -63,7 +79,7 @@ const Section = ({ section, setSection }: SectionProps) => {
             <Heading
               key={index}
               heading={contentItem.value}
-              setHeading={setValue(index)}
+              setHeading={setHeading(index)}
             />
           );
         }
@@ -72,11 +88,19 @@ const Section = ({ section, setSection }: SectionProps) => {
             <Paragraph
               key={index}
               paragraph={contentItem.value}
-              setParagraph={setValue(index)}
+              setParagraph={setParagraph(index)}
             />
           );
         }
-        // You can expand this to handle other types (paragraph, figure, etc.) later
+        if (contentItem.type === "figure") {
+          return (
+            <Figure
+              key={index}
+              image={contentItem.value}
+              setImage={setFigure(index)}
+            />
+          );
+        }
       })}
 
       {/* Toggle visibility of dropdown */}
@@ -94,6 +118,7 @@ const Section = ({ section, setSection }: SectionProps) => {
             <option value="">Select</option>
             <option value="heading">Heading</option>
             <option value="paragraph">Paragraph</option>
+            <option value="figure">Figure</option>
           </select>
 
           <Button
