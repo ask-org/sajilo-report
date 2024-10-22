@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Tsection, TContentItem } from "../../../../types/create-document";
 import HeadingRender from "./heading-render";
 import ParagraphRender from "./paragraph-render";
+import ImageRenderer from "./image-renderer";
 
 const Chapter = ({ data }: { data: Tsection }) => {
   const { content }: { content: TContentItem[] } = data;
@@ -16,6 +17,9 @@ const Chapter = ({ data }: { data: Tsection }) => {
         }
         if (contentItem.type === "paragraph") {
           return <ParagraphRender key={index} paragraph={contentItem.value} />;
+        }
+        if (contentItem.type === "figure") {
+          return <ImageRenderer key={index} figure={contentItem.value} />;
         }
       })}
       {/*
