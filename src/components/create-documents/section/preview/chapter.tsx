@@ -4,16 +4,31 @@ import HeadingRender from "./heading-render";
 import ParagraphRender from "./paragraph-render";
 import ImageRenderer from "./image-renderer";
 
-const Chapter = ({ data }: { data: Tsection }) => {
-  const { content }: { content: TContentItem[] } = data;
+const Chapter = ({ id, data }: { id: string; data: Tsection }) => {
+  const {
+    content,
+    subsection,
+  }: { content: TContentItem[]; subsection?: Tsection[] } = data;
+
   useEffect(() => {
     console.log(content);
   }, [data, content]);
+
+  const idType = id.split(".").length;
+
+  const headingType = idType === 1 ? "h1" : idType === 2 ? "h2" : "h3";
+
   return (
     <div className="flex flex-col gap-4">
       {content.map((contentItem, index) => {
         if (contentItem.type === "heading") {
-          return <HeadingRender key={index} heading={contentItem.value} />;
+          return (
+            <HeadingRender
+              key={index}
+              heading={contentItem.value}
+              headingType={headingType}
+            />
+          );
         }
         if (contentItem.type === "paragraph") {
           return <ParagraphRender key={index} paragraph={contentItem.value} />;
@@ -22,16 +37,10 @@ const Chapter = ({ data }: { data: Tsection }) => {
           return <ImageRenderer key={index} figure={contentItem.value} />;
         }
       })}
-      {/*
-    <HeadingRender heading={data.heading} />
-      <ParagraphRender paragraph={data.paragraph ?? [""]} />
-      <ImageRenderer figures={data.figures ?? []} />
-      {data.subSections &&
-        data.subSections?.length > 0 &&
-        data.subSections.map((subSection, index) => (
-          <Chapter key={index} data={subSection} />
-        ))}
-      */}
+      {subsection &&
+        subsection.map((section, index) => {
+          return <Chapter key={index} data={section} id={`${id}.${index}`} />;
+        })}
     </div>
   );
 };

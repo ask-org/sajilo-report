@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ImagePlus, X, Upload, Type } from "lucide-react";
+import { ImagePlus, X, Type } from "lucide-react";
 
 type TFigure = {
   src: string | null;
