@@ -35,7 +35,6 @@ export const AddContentForm: React.FC<AddContentFormProps> = ({
           <option value="heading">Heading</option>
           <option value="paragraph">Paragraph</option>
           <option value="figure">Figure</option>
-          <option value="subsection">Child Section</option>
         </select>
       </div>
 
