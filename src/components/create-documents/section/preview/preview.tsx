@@ -13,7 +13,7 @@ const Preview = ({ section }: PreviewProps) => {
           {section.map((data: Tsection, index: number) => {
             return (
               <div key={index}>
-                <Chapter data={data} />
+                <Chapter data={data} id={index.toString()} />
               </div>
             );
           })}

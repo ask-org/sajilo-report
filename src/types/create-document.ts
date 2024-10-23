@@ -15,5 +15,5 @@ export type TContentItem =
 
 export type Tsection = {
   content: TContentItem[];
-  subection?: Tsection[];
+  subsection?: Tsection[];
 };

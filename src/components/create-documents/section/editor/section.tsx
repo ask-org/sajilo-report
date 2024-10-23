@@ -31,7 +31,7 @@ const Section: React.FC<SectionProps> = ({ section, setSection }) => {
   useEffect(() => {
     setSection((prev) => {
       const newSection = [...prev];
-      newSection[prev.indexOf(section)].subection = subSection;
+      newSection[prev.indexOf(section)].subsection = subSection;
       return newSection;
     });
   }, [section, setSection, subSection]);
