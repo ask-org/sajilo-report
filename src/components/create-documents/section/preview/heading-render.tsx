@@ -13,7 +13,7 @@ const HeadingRender = ({
       case "h2":
         return "text-2xl font-semibold text-gray-800 mb-4 tracking-normal";
       case "h3":
-        return "text-xl font-medium text-gray-700 mb-3";
+        return "text-x font-medium text-gray-700 mb-3";
       default:
         return "text-xl font-medium text-gray-700 mb-2";
     }
