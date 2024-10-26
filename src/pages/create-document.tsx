@@ -7,8 +7,8 @@ export default function CreateDocument() {
   const [section, setSection] = useState<Tsection[]>([
     {
       content: [
-        { type: "heading", value: "value" },
-        { type: "paragraph", value: "value" },
+        { type: "heading", value: "Abstract" },
+        { type: "paragraph", value: "Add your content here" },
       ],
     },
   ]);

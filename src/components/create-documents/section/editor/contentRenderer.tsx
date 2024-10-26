@@ -28,10 +28,13 @@ const Wrapper: React.FC<TWrapperProps> = ({ children, index, onRemove }) => {
   };
 
   return (
-    <div className="relative group">
+    <div className="relative ">
       <button
-        onClick={handleRemove}
-        className="absolute z-50 top-0 right-0 p-1.5 rounded-full opacity-0 group-hover:opacity-100 hover:bg-red-50 focus:bg-red-50 transition-all duration-200 ease-in-out"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleRemove();
+        }}
+        className="absolute z-50 top-0 right-0 p-1.5 rounded-full opacity-50 hover:opacity-100 hover:bg-red-50 focus:bg-red-50 transition-all duration-200 ease-in-out"
       >
         <RxCross2 className="w-4 h-4 text-red-500" />
       </button>
