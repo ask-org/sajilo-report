@@ -12,10 +12,8 @@ type SectionProps = {
 
 const Section: React.FC<SectionProps> = ({ section, setSection }) => {
   const [isAdding, setIsAdding] = useState(false);
-  const { content, updateContent, addContent } = useContentManager(
-    section,
-    setSection,
-  );
+  const { content, updateContent, addContent, removeContent } =
+    useContentManager(section, setSection);
   const [subSection, setSubSection] = useState<Tsection[]>([]);
 
   const addSubSection = () => {
@@ -41,7 +39,11 @@ const Section: React.FC<SectionProps> = ({ section, setSection }) => {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="p-6">
           {/* Content Area */}
-          <ContentRenderer content={content} onUpdate={updateContent} />
+          <ContentRenderer
+            content={content}
+            onUpdate={updateContent}
+            onRemove={removeContent}
+          />
 
           {/* Subsection Area */}
           {subSection.map((subsec, index) => {

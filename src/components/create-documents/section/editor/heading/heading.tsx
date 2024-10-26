@@ -8,12 +8,6 @@ interface HeadingProps {
 const Heading: React.FC<HeadingProps> = ({ heading, setHeading }) => {
   return (
     <div className="flex flex-col space-y-2 mb-4">
-      <label
-        htmlFor="heading-input"
-        className="text-lg font-semibold text-gray-700"
-      >
-        Heading:
-      </label>
       <input
         id="heading-input"
         type="text"
