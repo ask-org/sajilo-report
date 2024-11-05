@@ -19,8 +19,7 @@ export type TContentItem =
   | { type: "heading"; value: THeading }
   | { type: "paragraph"; value: TParagraph }
   | { type: "figure"; value: TFigure }
-  | { type: "table"; value: TTable }
-  | { type: "list"; value: TList };
+  | { type: "table"; value: TTable };
 
 export type Tsection = {
   content: TContentItem[];

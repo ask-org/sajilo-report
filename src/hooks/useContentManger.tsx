@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  TContentItem,
-  TFigure,
-  TList,
-  Tsection,
-} from "../types/create-document";
+import { TContentItem, TFigure, Tsection } from "../types/create-document";
 
 export const useContentManager = (
   section: Tsection,
@@ -20,7 +15,7 @@ export const useContentManager = (
     });
   }, [content, section, setSection]);
 
-  const updateContent = (index: number, value: string | TFigure | TList) => {
+  const updateContent = (index: number, value: string | TFigure) => {
     const newContent = [...content];
     newContent[index].value = value;
     setContent(newContent);
@@ -31,14 +26,6 @@ export const useContentManager = (
       heading: { type: "heading", value: "" },
       paragraph: { type: "paragraph", value: "" },
       figure: { type: "figure", value: { src: "", caption: "" } },
-      list: {
-        type: "list",
-        value: {
-          type: "unordered",
-          items: ["First item"],
-          subList: [],
-        },
-      },
     };
 
     const newItem = newContentMap[type];
