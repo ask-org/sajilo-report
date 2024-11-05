@@ -24,9 +24,9 @@ const Wrapper: React.FC<TWrapperProps> = ({ children, onRemove }) => {
           e.stopPropagation();
           onRemove();
         }}
-        className="absolute z-50 top-0 right-0 p-1.5 rounded-full opacity-50 hover:opacity-100 hover:bg-red-50 focus:bg-red-50 transition-all duration-200 ease-in-out"
+        className="absolute right-0 top-0 z-50 rounded-full p-1.5 opacity-50 transition-all duration-200 ease-in-out hover:bg-red-50 hover:opacity-100 focus:bg-red-50"
       >
-        <RxCross2 className="w-4 h-4 text-red-500" />
+        <RxCross2 className="h-4 w-4 text-red-500" />
       </button>
       {children}
     </div>
@@ -62,9 +62,9 @@ const Section: React.FC<SectionProps> = ({ section, setSection }) => {
   }, [section, setSection, subSection]);
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="mx-auto w-full max-w-3xl">
       <Wrapper onRemove={handleRemove}>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
           <div className="p-6">
             {/* Content Area */}
             <ContentRenderer
@@ -85,7 +85,7 @@ const Section: React.FC<SectionProps> = ({ section, setSection }) => {
             <div className="flex justify-end">
               <button
                 onClick={() => addSubSection()}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+                className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 <GoPlusCircle />
                 subsection
@@ -97,7 +97,7 @@ const Section: React.FC<SectionProps> = ({ section, setSection }) => {
           <div className="h-px bg-gray-200" />
 
           {/* Actions Area */}
-          <div className="px-6 py-4 bg-gray-50">
+          <div className="bg-gray-50 px-6 py-4">
             {isAdding ? (
               <div className="space-y-4">
                 <AddContentForm
@@ -111,7 +111,7 @@ const Section: React.FC<SectionProps> = ({ section, setSection }) => {
             ) : (
               <button
                 onClick={() => setIsAdding(true)}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+                className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 <GoPlusCircle />
                 Add Content

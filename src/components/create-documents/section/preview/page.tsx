@@ -4,7 +4,7 @@ type PageProps = {
 const Page = ({ children }: PageProps) => {
   return (
     <div
-      className="bg-white shadow-lg mx-auto mt-10"
+      className="mx-auto mt-10 bg-white shadow-lg"
       style={{
         width: "100%", // Full width for responsiveness
         maxWidth: "210mm", // Max width for A4 size

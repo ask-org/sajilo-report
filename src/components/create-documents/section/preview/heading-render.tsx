@@ -29,11 +29,7 @@ const HeadingRender = ({
   return (
     <div className="relative">
       <HeadingTag
-        className={`${getHeadingStyles(headingType)}
-          relative z-10
-          transition-colors duration-200
-          hover:text-blue-600
-        `}
+        className={`${getHeadingStyles(headingType)} relative z-10 transition-colors duration-200 hover:text-blue-600`}
       >
         {headingType === "h1" ? capitalize(heading) : heading}
       </HeadingTag>

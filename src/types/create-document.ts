@@ -7,11 +7,20 @@ export type TTable = {
   data: string[][];
 };
 
+export type TList = {
+  type: "ordered" | "unordered";
+  items: { type: "heading"; value: string[] } & {
+    type: "paragraph";
+    value: string[];
+  } & { type: "list"; value: TList[] }[];
+};
+
 export type TContentItem =
   | { type: "heading"; value: THeading }
   | { type: "paragraph"; value: TParagraph }
   | { type: "figure"; value: TFigure }
-  | { type: "table"; value: TTable };
+  | { type: "table"; value: TTable }
+  | { type: "list"; value: TList };
 
 export type Tsection = {
   content: TContentItem[];

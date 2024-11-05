@@ -19,20 +19,20 @@ const ParagraphEditor = ({ paragraph, setParagraph }: ParagraphProps) => {
   }, [paragraph]);
 
   return (
-    <div className="group relative w-full max-w-2xl mx-auto my-4">
+    <div className="group relative mx-auto my-4 w-full max-w-2xl">
       <div className="relative">
         <textarea
           ref={textareaRef}
           value={paragraph}
           onChange={(e) => setParagraph(e.target.value)}
-          className="w-full px-2 py-2.5 min-h-[120px] border border-gray-200 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 text-base leading-relaxed transition-all duration-200 ease-in-out resize-none whitespace-pre-wrap"
+          className="min-h-[120px] w-full resize-none whitespace-pre-wrap rounded-lg border border-gray-200 bg-white px-2 py-2.5 text-base leading-relaxed text-gray-900 shadow-sm transition-all duration-200 ease-in-out focus:border-transparent focus:ring-2 focus:ring-blue-500"
           placeholder="Start typing your paragraph..."
           style={{ lineHeight: "1.6" }}
         />
       </div>
 
       {/* Character count */}
-      <div className="absolute right-3 bottom-2 text-xs text-gray-400">
+      <div className="absolute bottom-2 right-3 text-xs text-gray-400">
         {paragraph.length} characters
       </div>
     </div>

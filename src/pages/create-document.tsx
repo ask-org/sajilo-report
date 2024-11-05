@@ -14,7 +14,7 @@ export default function CreateDocument() {
   ]);
 
   return (
-    <div className="grid grid-cols-12 h-screen">
+    <div className="grid h-screen grid-cols-12">
       {/* Editor Section */}
       <div className="col-span-4 h-full overflow-y-auto bg-gray-100 p-4">
         <Editor section={section} setSection={setSection} />

@@ -7,12 +7,12 @@ interface HeadingProps {
 
 const Heading: React.FC<HeadingProps> = ({ heading, setHeading }) => {
   return (
-    <div className="flex flex-col space-y-2 mb-4">
+    <div className="mb-4 flex flex-col space-y-2">
       <input
         id="heading-input"
         type="text"
         value={heading}
-        className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        className="rounded-md border border-gray-300 p-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         onChange={(e) => {
           setHeading(e.target.value);
         }}

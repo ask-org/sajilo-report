@@ -16,10 +16,10 @@ const Paragraphs: React.FC<ParagraphsProps> = ({
   };
 
   return (
-    <div className="flex flex-col rounded-lg  mx-auto">
+    <div className="mx-auto flex flex-col rounded-lg">
       <label
         htmlFor="heading-input"
-        className="text-lg font-semibold text-gray-700 mb-2"
+        className="mb-2 text-lg font-semibold text-gray-700"
       >
         Paragraphs:
       </label>

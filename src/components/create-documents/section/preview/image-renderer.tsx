@@ -2,7 +2,7 @@ import { TFigure } from "../../../../types/create-document";
 
 const ImageRenderer = ({ figure }: { figure: TFigure }) => {
   return (
-    <div className="text-center flex flex-col gap-2">
+    <div className="flex flex-col gap-2 text-center">
       <figure>
         {figure.src ? (
           <>
@@ -12,7 +12,7 @@ const ImageRenderer = ({ figure }: { figure: TFigure }) => {
             </figcaption>
           </>
         ) : (
-          <div className="bg-gray-200 h-40 w-80 flex justify-center items-center">
+          <div className="flex h-40 w-80 items-center justify-center bg-gray-200">
             Empty image detected
           </div>
         )}

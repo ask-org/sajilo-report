@@ -6,11 +6,11 @@ const ParagraphRender = ({ paragraph }: ParagraphRendererProps) => {
   const lines = paragraph.split("\n");
 
   return (
-    <div className={`prose max-w-none `}>
+    <div className={`prose max-w-none`}>
       {lines.map((line, index) => (
         <div
           key={index}
-          className={`text-gray-700 leading-relaxed ${line.trim() === "" ? "h-4" : ""}`}
+          className={`leading-relaxed text-gray-700 ${line.trim() === "" ? "h-4" : ""}`}
         >
           {line.trim() === "" ? "\u00A0" : line}
         </div>

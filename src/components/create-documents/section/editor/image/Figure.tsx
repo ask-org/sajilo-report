@@ -52,17 +52,16 @@ const Figure = ({ image, setImage }: ImageProps) => {
   };
 
   return (
-    <div className="space-y-4 max-w-2xl mx-auto">
+    <div className="mx-auto max-w-2xl space-y-4">
       {/* Image Upload Area */}
       <div
-        className={`relative border-2 border-dashed rounded-lg p-6 transition-colors duration-200
-          ${
-            isDragging
-              ? "border-blue-500 bg-blue-50"
-              : src
-                ? "border-gray-200 bg-gray-50"
-                : "border-gray-300 hover:border-gray-400 bg-white"
-          }`}
+        className={`relative rounded-lg border-2 border-dashed p-6 transition-colors duration-200 ${
+          isDragging
+            ? "border-blue-500 bg-blue-50"
+            : src
+              ? "border-gray-200 bg-gray-50"
+              : "border-gray-300 bg-white hover:border-gray-400"
+        }`}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -73,26 +72,26 @@ const Figure = ({ image, setImage }: ImageProps) => {
             <img
               src={src}
               alt={caption || "Uploaded image"}
-              className="w-full h-auto rounded-md shadow-sm"
+              className="h-auto w-full rounded-md shadow-sm"
             />
             <button
               onClick={removeFigure}
-              className="absolute top-2 right-2 p-1.5 bg-white rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200"
+              className="absolute right-2 top-2 rounded-full bg-white p-1.5 shadow-md transition-colors duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
             >
-              <X className="w-4 h-4 text-gray-600" />
+              <X className="h-4 w-4 text-gray-600" />
             </button>
           </div>
         ) : (
           // Upload Prompt
           <div className="text-center">
             <div className="flex flex-col items-center space-y-3">
-              <div className="p-3 bg-gray-100 rounded-full">
-                <ImagePlus className="w-6 h-6 text-gray-600" />
+              <div className="rounded-full bg-gray-100 p-3">
+                <ImagePlus className="h-6 w-6 text-gray-600" />
               </div>
               <div className="space-y-1">
                 <p className="text-sm font-medium text-gray-800">
                   Drop an image here, or{" "}
-                  <label className="text-blue-500 hover:text-blue-600 cursor-pointer">
+                  <label className="cursor-pointer text-blue-500 hover:text-blue-600">
                     browse
                     <input
                       type="file"
@@ -116,14 +115,14 @@ const Figure = ({ image, setImage }: ImageProps) => {
 
       {/* Caption Input */}
       <div className="relative">
-        <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-          <Type className="w-4 h-4 text-gray-400" />
+        <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+          <Type className="h-4 w-4 text-gray-400" />
         </div>
         <input
           type="text"
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm transition-colors duration-200"
+          className="w-full rounded-md border border-gray-300 py-2.5 pl-10 pr-4 text-sm shadow-sm transition-colors duration-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Add a caption for this image..."
         />
       </div>
