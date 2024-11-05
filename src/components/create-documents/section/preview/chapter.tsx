@@ -18,6 +18,11 @@ const Chapter = ({ id, data }: { id: string; data: Tsection }) => {
   const idType = id.split(".").length;
 
   const headingType = idType === 1 ? "h1" : idType === 2 ? "h2" : "h3";
+<<<<<<< HEAD
+=======
+
+  console.log(data,"hello hello")
+>>>>>>> main_backup
 
   return (
     <div className="flex flex-col gap-4">

@@ -2,6 +2,8 @@ import { useState } from "react";
 import Section from "./section";
 import { Tsection } from "../../../../types/create-document";
 import Button from "../../../../ui/Button";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import MyDocument from "../../../../utils/pdf-generator/PdfGenerator";
 
 type EditorProps = {
   section: Tsection[];
@@ -34,6 +36,15 @@ const Editor = ({ section, setSection }: EditorProps) => {
       >
         Add Section
       </Button>
+      <div className="flex justify-end mt-4">
+        <PDFDownloadLink
+          document={<MyDocument sectionData={sectionData} />} // Passing sectionData
+          fileName="document.pdf"
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          {({ loading }) => (loading ? 'Loading document...' : 'Download PDF')}
+        </PDFDownloadLink>
+      </div>
     </div>
   );
 };
