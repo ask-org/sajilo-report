@@ -12,10 +12,7 @@
     "format": "prettier --write . --plugin=prettier-plugin-tailwindcss"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@react-pdf/renderer": "^4.0.0",
->>>>>>> main_backup
     "lucide-react": "^0.453.0",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
